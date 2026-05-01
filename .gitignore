@@ -3,3 +3,5 @@ node_modules
 *.mp4
 *.MP4
 .env
+.DS_Store
+next-env.d.ts
