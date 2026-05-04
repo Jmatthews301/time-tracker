@@ -120,6 +120,24 @@ export default function AdminPage() {
     return emp?.full_name || emp?.email || "Unknown Employee";
   };
 
+  const getSelectedEmployeeWeeklyHours = () => {
+    if (!selectedEmployee) return "0.00";
+
+    return (
+      weeklySummary.find((employee) => employee.id === selectedEmployee.id)
+        ?.weekHours || "0.00"
+    );
+  };
+
+  const getSelectedEmployeeWeeklySubmissions = () => {
+    if (!selectedEmployee) return 0;
+
+    return (
+      weeklySummary.find((employee) => employee.id === selectedEmployee.id)
+        ?.submissions || 0
+    );
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(`${dateString}T12:00:00`);
 
@@ -559,12 +577,40 @@ export default function AdminPage() {
                   <p className="text-xs font-black uppercase tracking-[0.25em] text-[#e3a15b]">
                     Employee History
                   </p>
+
                   <h2 className="text-3xl font-black">
                     {selectedEmployee.full_name || selectedEmployee.email}
                   </h2>
+
                   <p className="text-sm text-gray-400">
                     {selectedEmployee.email}
                   </p>
+
+                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl bg-[#b8742b]/20 px-5 py-4">
+                      <p className="text-xs font-black uppercase tracking-widest text-[#e3a15b]">
+                        Weekly Hours
+                      </p>
+                      <p className="mt-1 text-4xl font-black">
+                        {getSelectedEmployeeWeeklyHours()}
+                      </p>
+                      <p className="mt-1 text-xs text-gray-400">
+                        Current week total
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl bg-white/[0.06] px-5 py-4">
+                      <p className="text-xs font-black uppercase tracking-widest text-gray-500">
+                        Weekly Submissions
+                      </p>
+                      <p className="mt-1 text-4xl font-black">
+                        {getSelectedEmployeeWeeklySubmissions()}
+                      </p>
+                      <p className="mt-1 text-xs text-gray-400">
+                        This week
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <button
