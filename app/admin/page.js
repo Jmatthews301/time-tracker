@@ -1,6 +1,6 @@
-"use client";
+"use client"; 
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react"; 
 import { supabase } from "../lib/supabase";
 
 export default function AdminPage() {
@@ -276,12 +276,21 @@ export default function AdminPage() {
             </p>
           </div>
 
-          <button
-            onClick={logout}
-            className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-black shadow-lg transition-all duration-200 hover:scale-[1.04] hover:bg-red-500 active:scale-95"
-          >
-            Logout
-          </button>
+          <div className="flex gap-3">
+  <button
+    onClick={() => (window.location.href = "/admin/jobs")}
+    className="rounded-2xl bg-[#b8742b] px-5 py-3 text-sm font-black shadow-lg transition-all duration-200 hover:scale-[1.04] hover:bg-[#d08a38] active:scale-95"
+  >
+    Job Control Center
+  </button>
+
+  <button
+    onClick={logout}
+    className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-black shadow-lg transition-all duration-200 hover:scale-[1.04] hover:bg-red-500 active:scale-95"
+  >
+    Logout
+  </button>
+</div>
         </header>
 
         {/* Top Stats */}
